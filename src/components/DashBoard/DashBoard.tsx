@@ -30,11 +30,14 @@ const DashBoard = () => {
     try {
       const repoList = await fetchUserRepos(username)
       const contributions = await fetchUserContributionData(username)
-      const langChart = await fetchUserLanguages(input);
+      const langChart = await fetchUserLanguages(username);
       setLangData(langChart);
 
       setRepos(repoList)
-      setTotalContri(contributions.length)
+      const totalCount = contributions.flat().reduce((sum: number, obj: { count: number }) => sum + obj.count, 0);
+      setTotalContri(totalCount)
+
+      console.log("Contributions:", contributions)
 
       if (repoList.length > 0) {
          const commits = await fetchCommitActivity(username, repoList[0].name)
@@ -79,7 +82,7 @@ const DashBoard = () => {
       <div className="flex max-md:w-full max-md:flex-col w-1/2 mx-auto gap-x-4">
         <Input
           required
-          className="bg-black text-white max-md:w-full mt-2"
+          className="bg-black text-white max-md:w-full max-md:mt-2"
           placeholder="Enter your GitHub username or profile link"
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -94,7 +97,7 @@ const DashBoard = () => {
 
       {totalContri > 0 && (
         <p className="text-start text-4xl max-md:text-2xl px-3 py-2 mt-4">
-          Contributions: {totalContri}
+          Contributions: {totalContri+1}
         </p>
       )}
 
