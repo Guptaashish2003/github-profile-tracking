@@ -2,9 +2,9 @@ import reachFast from "@/assets/reachFast.png";
 
 const Navbar = () => {
   return (
-    <nav className="w-2/3 mx-auto backdrop-blur-3xl bg-white/20 h-8 rounded-xl shadow-lg mt-2 ">
+    <nav className="w-1/3 mx-auto backdrop-blur-3xl bg-white/20 h-12 rounded-3xl shadow-lg mt-4 ">
       
-        <ul className="flex justify-between items-center h-8 text-white  rounded-lg px-10 ">
+        <ul className="flex justify-between items-center h-12 text-white  rounded-lg px-10 ">
           <li >
             <a href="/" className="menuHover">Home</a>
           </li>
