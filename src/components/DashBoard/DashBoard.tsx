@@ -4,7 +4,6 @@ import { Input } from "../ui/input"
 import { RepoList } from "../RepoList"
 import {CommitChart,LanguagePieChart} from "../CommitChart"
 import {
-  fetchAllContribuitons,
   fetchCommitActivity,
   fetchUserContributionData,
   fetchUserRepos,
@@ -30,13 +29,12 @@ const DashBoard = () => {
   const getUserGithubData = async (username: string) => {
     try {
       const repoList = await fetchUserRepos(username)
-      const fetchAllContri = await fetchAllContribuitons(username)
       const contributions = await fetchUserContributionData(username)
       const langChart = await fetchUserLanguages(input);
       setLangData(langChart);
 
       setRepos(repoList)
-      setTotalContri(fetchAllContri.length)
+      setTotalContri(contributions.length)
 
       if (repoList.length > 0) {
          const commits = await fetchCommitActivity(username, repoList[0].name)
@@ -77,19 +75,19 @@ const DashBoard = () => {
   }
 
   return (
-    <div className="min-h-screen w-4/5 mx-auto flex flex-col justify-center items-start backdrop-blur-3xl rounded-3xl shadow-lg mt-4 p-10">
-      <div className="flex w-1/2 mx-auto gap-x-4">
+    <div className="min-h-screen w-4/5 max-md:w-[96%] mx-auto flex flex-col justify-center items-start backdrop-blur-3xl rounded-3xl shadow-lg mt-4 p-10 max-md:p-0.5">
+      <div className="flex max-md:w-full max-md:flex-col w-1/2 mx-auto gap-x-4">
         <Input
           required
-          className="bg-black text-white"
+          className="bg-black text-white max-md:w-full mt-2"
           placeholder="Enter your GitHub username or profile link"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button className="max-md:w-24 max-md:mt-1 max-md:ml-auto" onClick={handleSubmit}>Submit</Button>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mt-4 w-full">
+      <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-y-4 gap-4 mt-4 w-full">
       {chartData.length > 0 && <CommitChart data={chartData} />}
       { langData.length > 0 && <LanguagePieChart data={langData} />}
       </div>

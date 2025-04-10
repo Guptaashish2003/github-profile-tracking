@@ -17,7 +17,7 @@ interface RepoListProps {
   export const RepoList = ({ repos, userName }: RepoListProps) => {
     return (
       <div className="p-4">
-        <ul className="space-y-2 grid grid-cols-4 gap-4  ">
+        <ul className="space-y-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {repos.map((repo) => (
             <div key={repo.id} className="px-4 py-2 rounded-lg border-2 border-white">
                 <div className="flex items-start mb-2 gap-x-1.5">

@@ -35,7 +35,7 @@ interface CommitChartProps {
 export function CommitChart({ data }: CommitChartProps) {
 
   return (
-    <Card className="w-full h-full bg-card text-card-foreground shadow-sm border-2 border-white rounded-lg p-4 m-4">
+    <Card className="w-full h-full bg-card text-card-foreground shadow-sm border-2 border-white rounded-lg p-4 m-4 max-md:p-0 max-md:mx-0.5">
       <CardHeader>
         <CardTitle>Line Chart</CardTitle>
         <CardDescription>{data.length > 0 ? data[0].month : "No Data"} - {data.length > 0 ? data[data.length - 1].month : "No Data"}</CardDescription>
@@ -102,7 +102,7 @@ interface Props {
 
 export  function LanguagePieChart({ data }: Props) {
   return (
-    <Card className="w-full max-w-xl bg-card h-full text-card-foreground shadow-sm border rounded-lg p-4 m-4">
+    <Card className="w-full max-w-xl bg-card h-full text-card-foreground shadow-sm border rounded-lg p-4 m-4  max-md:p-0 max-md:mx-0.5">
       <CardHeader>
         <CardTitle>Language Distribution</CardTitle>
       </CardHeader>
