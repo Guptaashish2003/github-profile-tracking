@@ -16,12 +16,11 @@ const DashBoard = () => {
   const [userName, setUserName] = useState<string>("")
   const [repos, setRepos] = useState([])
   const [langData, setLangData] = useState<{ language: string; value: number }[]>([]);
-  const [commitData, setCommitData] = useState([])
+  const [_, setCommitData] = useState([])
   const [totalContri, setTotalContri] = useState(0)
   const [chartData, setChartData] = useState<{ month: string; commit: number }[]>([])
-  console.log("commitData..........", commitData)
 
-  const extractUsername = (raw: string): string => {
+    const extractUsername = (raw: string): string => {
     let trimmed = raw.trim()
     trimmed = trimmed.replace(/^(https?:\/\/)?(www\.)?github\.com\//, "")
     trimmed = trimmed.replace(/\/$/, "")
@@ -30,19 +29,19 @@ const DashBoard = () => {
 
   const getUserGithubData = async (username: string) => {
     try {
-      // const repoList = await fetchUserRepos(username)
-      // const fetchAllContri = await fetchAllContribuitons(username)
+      const repoList = await fetchUserRepos(username)
+      const fetchAllContri = await fetchAllContribuitons(username)
       const contributions = await fetchUserContributionData(username)
       const langChart = await fetchUserLanguages(input);
       setLangData(langChart);
 
-      // setRepos(repoList)
-      // setTotalContri(fetchAllContri.length)
+      setRepos(repoList)
+      setTotalContri(fetchAllContri.length)
 
-      // if (repoList.length > 0) {
-      //    const commits = await fetchCommitActivity(username, repoList[0].name)
-      //   setCommitData(commits)
-      // }
+      if (repoList.length > 0) {
+         const commits = await fetchCommitActivity(username, repoList[0].name)
+        setCommitData(commits)
+      }
 
       const monthlyData: Record<string, number> = {}
 

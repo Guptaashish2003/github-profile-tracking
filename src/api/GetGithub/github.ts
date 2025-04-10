@@ -4,8 +4,6 @@ import { toast } from "react-toastify";
 export const fetchUserRepos = async (username: string) => {
   try {
     const response = await axios.get(`https://api.github.com/users/${username}/repos`);
-
-    console.log("Response data:", response.data); // Log the response data
     return response.data;
   } catch (error) {
     toast.error("Error fetching repositories. Please check the username.");
@@ -19,7 +17,6 @@ export const fetchCommitActivity = async (username: string, repo: string) => {
     const res = await axios.get(
       `https://api.github.com/repos/${username}/${repo}/stats/commit_activity`
     );
-    console.log("Commit activity response:", res.data); 
     return res.data;
   } catch (error) {
     toast.error("Error fetching commit activity. Please check the repository name.");
@@ -33,7 +30,6 @@ export const fetchCommitsOnRepository = async (username: string, repo: string) =
         const res = await axios.get(
         `https://api.github.com/repos/${username}/${repo}/commits`
         );
-        console.log("Commits response:", res.data); 
         return res.data;
     } catch (error) {
         toast.error("Error fetching commits. Please check the repository name.");
@@ -47,7 +43,6 @@ export const fetchAllContribuitons = async (username: string) => {
         const res = await axios.get(
         `https://api.github.com/users/${username}/events`
         );
-        console.log("Contributions response:", res.data); 
         return res.data;
     } catch (error) {
         toast.error("Error fetching contributions. Please check the username.");
@@ -83,8 +78,6 @@ export async function fetchUserContributionData(username: string) {
     },
     body: JSON.stringify({ query }),
   })
-  console.log("Response:", res) 
-
   const json = await res.json()
 
   if (!json || !json.data) {
@@ -107,7 +100,6 @@ export async function fetchUserContributionData(username: string) {
 
 export async function fetchUserLanguages(username: string) {
   const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-  console.log("Response:", response)
   const repos = await response.json();
 
   if (!Array.isArray(repos)) return [];

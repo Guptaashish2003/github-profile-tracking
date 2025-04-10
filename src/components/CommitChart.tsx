@@ -33,14 +33,6 @@ interface CommitChartProps {
 }
 
 export function CommitChart({ data }: CommitChartProps) {
-  
-  console.log("data", data)
-  // const totalCommits = data.reduce((sum, week) => sum + week.total, 0);
-  // console.log("totalCommits", totalCommits)
-
-  
-  
-  
 
   return (
     <Card className="w-full h-full bg-card text-card-foreground shadow-sm border-2 border-white rounded-lg p-4 m-4">
@@ -127,8 +119,8 @@ export  function LanguagePieChart({ data }: Props) {
               fill="#8884d8"
               label
             >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              {data.map((_, index) => (
+                <Cell  key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip />
