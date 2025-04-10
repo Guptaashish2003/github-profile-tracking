@@ -93,7 +93,7 @@ const DashBoard = () => {
       </div>
 
       {totalContri > 0 && (
-        <p className="text-start text-4xl px-3 py-2 mt-2">
+        <p className="text-start text-4xl max-md:text-2xl px-3 py-2 mt-2">
           Contributions: {totalContri}
         </p>
       )}
@@ -106,7 +106,7 @@ const DashBoard = () => {
         />
       )}
       {repos.length > 0 && (
-        <p className="text-start text-4xl px-3 py-2 mt-2">
+        <p className="text-start text-4xl px-3 max-md:text-2xl py-2 mt-2">
           Repositories: {repos.length}
         </p>
       )}
