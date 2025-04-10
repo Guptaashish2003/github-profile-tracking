@@ -93,20 +93,20 @@ const DashBoard = () => {
       </div>
 
       {totalContri > 0 && (
-        <p className="text-start text-4xl max-md:text-2xl px-3 py-2 mt-2">
+        <p className="text-start text-4xl max-md:text-2xl px-3 py-2 mt-4">
           Contributions: {totalContri}
         </p>
       )}
 
       {userName && (
         <img
-          className="w-full mt-8"
+          className="w-full mt-8 max-md:mt-2"
           src={`https://ghchart.rshah.org/HEXCOLORCODE/${userName}`}
           alt={userName}
         />
       )}
       {repos.length > 0 && (
-        <p className="text-start text-4xl px-3 max-md:text-2xl py-2 mt-2">
+        <p className="text-start text-4xl px-3 max-md:text-2xl py-2 mt-4">
           Repositories: {repos.length}
         </p>
       )}
